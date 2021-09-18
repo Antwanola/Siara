@@ -2,8 +2,12 @@ const mongoose =  require('mongoose')
 const Schema = mongoose.Schema
 
 const incident = new Schema({
+    user:{
+        type: Schema.Types.ObjectId,
+        ref:'users'
+    },
     
-    username:{
+    name:{
         type: String,   
        }, 
        phone:{
@@ -11,16 +15,16 @@ const incident = new Schema({
        },
        state:{
         type:String,
-        required:true
+        
        },
        lga:{
         type:String,
-        required:true
+        
         
        },
        street:{
         type:String,
-        required:true
+        
        },       
     date:{
         type:String,
@@ -30,19 +34,21 @@ const incident = new Schema({
         },
     
     eResponse:{
-        type:Boolean,
-        required:true
+        type: String,
+        default: 'Yes'
+        
     },
     eResponse_needed:{
-        type:Boolean,
-        required:true
+        type: String,
+        default: 'Yes'
+        
     },
-    anonimous:{
+    anonymous:{
         type:Boolean
-    }, 
+    },
     report:{
         type:String,
-        required:true
+       
     }
 
 

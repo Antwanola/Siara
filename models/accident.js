@@ -2,8 +2,11 @@ const mongoose =  require('mongoose')
 const Schema = mongoose.Schema
 
 const accident = new Schema({
-    
-    username:{
+    user:{
+        type:Schema.Types.ObjectId,
+        ref: 'users'
+    },
+    name:{
         type: String,   
        }, 
        phone:{
@@ -30,12 +33,12 @@ const accident = new Schema({
         },
     
     eResponse:{
-        type:Boolean,
-        required:true
+        type:String,
+        
     },
     eResponse_needed:{
-        type:Boolean,
-        required:true
+        type:String,
+        
     },
     anonymous:{
         type:Boolean

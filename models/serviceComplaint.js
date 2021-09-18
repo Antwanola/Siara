@@ -3,9 +3,12 @@ const Schema = mongoose.Schema
 
 
 const serviceComplaint = new Schema({
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'Users'
+    },
 
-
- username:{
+ name:{
     type: String,   
    }, 
    phone:{
@@ -14,16 +17,16 @@ const serviceComplaint = new Schema({
    },
    state:{
     type:String,
-    required:true
+    
    },
    lga:{
     type:String,
-    required:true
+    
     
    },
    street:{
     type:String,
-    required:true
+    
    },       
 date:{
     type:String,

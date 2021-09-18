@@ -8,11 +8,12 @@ const user = new schema({
     },
     email:{
         type:String,
-        required:true
+        required:true,
     },
     phone:{
         type:Number,
-        required:true
+        required:true,
+       
     },
     address:{
         type:String
@@ -20,6 +21,12 @@ const user = new schema({
     picture:{
         type:String
     },
+    password:{
+        type:String
+    },
+    role:{
+        type:String
+    }
 
 })
 module.exports = mongoose.model('users', user)

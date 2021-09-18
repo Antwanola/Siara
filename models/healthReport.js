@@ -2,6 +2,10 @@ const mongoose =  require('mongoose')
 const Schema = mongoose.Schema
 
 const healthReport = new Schema({
+    user:{
+        type:Schema.Types.ObjectId,
+        ref:'users'
+    },
     username:{
         type: String,   
        }, 
@@ -10,16 +14,16 @@ const healthReport = new Schema({
        },
        state:{
         type:String,
-        required:true
+        
        },
        lga:{
         type:String,
-        required:true
+        
         
        },
        street:{
         type:String,
-        required:true
+        
        },       
     date:{
         type:String,
@@ -28,11 +32,11 @@ const healthReport = new Schema({
          type: String,
         },
 pOccurence:{
-         type:Boolean
+         type:String
         },
     pOccurence_detail:{
                 type:String,
-                required:true
+                
                },
                age:{
                    type:Number
@@ -43,15 +47,15 @@ pOccurence:{
                },
     
     eResponse:{
-        type:Boolean,
-        required:true
+        type:String,
+        
     },
     eResponse_needed:{
-        type:Boolean,
-        required:true
+        type:String,
+        
     },
     anonymous:{
-        type:Boolean
+        type:String
     }, 
     report:{
         type:String,

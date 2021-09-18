@@ -15,6 +15,8 @@ function generateToken(User){
 
 
 module.exports = {
+  generateToken,
+  verifyToken,
  
 register:(req, res, next)=>{
     const User = new user({
@@ -23,19 +25,21 @@ register:(req, res, next)=>{
       phone: req.body.phone
   })
   user.findOne({phone:User.phone}).then(payload=>{
+    console.log(User)
     
   if(payload == null){
   User.save().then(saved=>{
       
       const accessToken =  generateToken(saved.id)
       const refreshToken = Jwt.sign({id:saved.id}, process.env.REFRESH_TOKEN)
-      res.status(200).json({ accessToken, refreshToken })
+      req.accessToken = accessToken
+      res.status(200).json({ accessToken, refreshToken,  saved })
   })    
   
   }
      else{
-      if(payload.phone == User.phone || payload.email == User.emai){
-          res.status(403).send('User already exist or phone ')
+      if(payload.phone == User.phone || payload.email == User.email){
+          res.status(403).send('User already exist ')
       }
   }
     next()
@@ -56,6 +60,7 @@ register:(req, res, next)=>{
          
           const token = generateToken(payload.id)
           const refreshToken =  Jwt.sign({id:payload.id}, process.env.REFRESH_TOKEN)
+          req.token = token 
           return res.status(400).json({payload, token, refreshToken});
            }  
     })
@@ -75,7 +80,7 @@ authenticationToken:(req, res,next)=>{
       if(err)return res.sendStatus(403)
 
       req.user = user
-      console.log(user)
+     
       next()
   }) 
 },

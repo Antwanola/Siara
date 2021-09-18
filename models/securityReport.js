@@ -2,7 +2,11 @@ const mongoose =  require('mongoose')
 const Schema = mongoose.Schema
 
 const securityReport = new Schema({
-    username:{
+    user:{
+        type:Schema.Types.ObjectId,
+        ref:'users'
+    },
+    name:{
         type: String,   
        }, 
        phone:{
@@ -10,16 +14,16 @@ const securityReport = new Schema({
        },
        state:{
         type:String,
-        required:true
+        
        },
        lga:{
         type:String,
-        required:true
+        
         
        },
        street:{
         type:String,
-        required:true
+        
        },       
     date:{
         type:String,
@@ -28,23 +32,23 @@ const securityReport = new Schema({
          type: String,
         },
 pOccurence:{
-         type:Boolean
+         type:  String
         },
     pOccurence_detail:{
                 type:String,
-                required:true
+                
                },
     
     eResponse:{
-        type:Boolean,
-        required:true
+        type:  String,
+         
     },
     eResponse_needed:{
-        type:Boolean,
-        required:true
+        type:  String,
+         
     },
     anonymous:{
-        type:Boolean
+        type:  String
     }, 
     report:{
         type:String,
